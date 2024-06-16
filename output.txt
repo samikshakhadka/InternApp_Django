@@ -1,0 +1,28 @@
+
+-----------------
+
+Filter query
+1. store a mentor in variable
+mentor1 = Mentor.objects.get(id=1)
+--> Sushil Tiwari
+2. filter interns who have sushil tiwari as mentor
+interns = Intern.object.filter(mentor= mentor1)
+3. read result
+interns
+--> kashyap, sandesh
+
+Select_related
+1. use select_related query
+interns = Intern.objects.select_related().all() 
+2. read result
+interns
+--> <QuerySet [<Intern: Samiksha>, <Intern: sudeep>, <Intern: kashyap>, <Intern: sandesh>, <Intern: manish>]>
+3. show the result in elaborate way
+for intern in interns:
+...     print(f"Intern: {intern.name}, Mentor: {intern.mentor.name}")
+-->
+Intern: Samiksha, Mentor: Sudan Bhandari
+Intern: sudeep, Mentor: Sudan Bhandari
+Intern: kashyap, Mentor: Sushil Tiwari
+Intern: sandesh, Mentor: Sushil Tiwari
+Intern: manish, Mentor: Rup Rajbanshi
