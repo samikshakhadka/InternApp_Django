@@ -1,0 +1,65 @@
+GeeksModel.objects.bulk_create(
+    # [GeeksModel(title="TOC", description="a book on TOC", img="images/fifi1.jpg"),
+    #  GeeksModel(title="DAA", description="a booK ON DAA", img="images/fifi1.jpg"),
+    #  GeeksModel(title="DL", description="a booK ON DL", img="images/fifi1.jpg"),
+    #
+  ]
+
+
+mentors = [
+    Mentor(name='Sushil Tiwari', email='sushil.tiwari@.com', position='Senior Developer'),
+    Mentor(name='Sudan Bhandari', email='sudan.bhandari@.com', position='Project Manager'),
+    Mentor(name='Rup Rajbanshi', email='rup.rajbanshi@gmail.com', position='Data Scientist'),
+    Mentor(name='Subina Sharma', email='subina.sharma@.com', position='UX Designer')
+]
+
+
+
+
+
+
+# Create Intern instances and assign mentor and projects in one go
+(
+intern1.projects.add(project1, project2)  # Add projects to intern1
+
+intern2 = Intern.objects.create(name='Sudeep', mentor=mentor2)
+intern2.projects.add(project2)  # Add projects to intern2
+
+intern3 = Intern.objects.create(name='Kashyap', mentor=mentor1)
+intern3.projects.add(project1)  # Add projects to intern3
+
+intern4 = Intern.objects.create(name='Sandesh', mentor=mentor2)
+intern4.projects.add(project1, project2)  # Add projects to intern4
+
+
+
+
+
+
+-----------------
+
+Filter query
+1. store a mentor in variable
+mentor1 = Mentor.objects.get(id=1)
+--> Sushil Tiwari
+2. filter interns who have sushil tiwari as mentor
+interns = Intern.object.filter(mentor= mentor1)
+3. read result
+interns
+--> kashyap, sandesh
+
+Select_related
+1. use select_related query
+interns = Intern.objects.select_related().all() 
+2. read result
+interns
+--> <QuerySet [<Intern: Samiksha>, <Intern: sudeep>, <Intern: kashyap>, <Intern: sandesh>, <Intern: manish>]>
+3. show the result in elaborate way
+for intern in interns:
+...     print(f"Intern: {intern.name}, Mentor: {intern.mentor.name}")
+-->
+Intern: Samiksha, Mentor: Sudan Bhandari
+Intern: sudeep, Mentor: Sudan Bhandari
+Intern: kashyap, Mentor: Sushil Tiwari
+Intern: sandesh, Mentor: Sushil Tiwari
+Intern: manish, Mentor: Rup Rajbanshi
