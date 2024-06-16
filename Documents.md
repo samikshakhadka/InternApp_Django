@@ -30,7 +30,7 @@
 
 ## Shallow copy
 
-- creates a new object which stores the reference of the original elements. it doesn't create a copy of nested objects, instead it just copies the reference of nested objects
+- creates a new object whichj stores the reference of the original elements. it doesn't create a copy of nested objects, instead it just copies the reference of nested objects
 
 ## Deep Copy
 
